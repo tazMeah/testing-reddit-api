@@ -30,7 +30,7 @@ async function getPosts(subreddit) {
         image.src = thumbnail;
 
         // let's append the link...
-        document.body.append(link);
+        document.querySelector("#postContainer").append(link);
         
         // then add the image and headline to that link, that way they're both clickable.
         link.append(headline);
@@ -44,5 +44,18 @@ async function getPosts(subreddit) {
 }
 
 // when you first arrive on the page, getPosts from default "aww"
-getPosts(url);
+getPosts(url).catch((err)=>{
+    alert(err);
+});
+
+
+// when you search for a subreddit
+document.querySelector("button").addEventListener("click", function(){
+    // clear out the previous results
+    document.querySelector("#postContainer").innerHTML = "";
+
+    // get the new 'url' variable value from the input
+    url = "https://www.reddit.com/r/" + document.querySelector("input").value + "/.json";
+    getPosts(url)
+})
 
