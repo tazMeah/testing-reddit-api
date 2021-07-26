@@ -14,7 +14,8 @@ async function getPosts(subreddit) {
     let allPosts = data.data.children; // should be an array, e.g. (27)[]
 
     // now let's  pull out the 3 items we'll need from each array item
-    for (let i = 0; i < allPosts.length; i++){
+    // for (let i = 0; i < allPosts.length; i++){
+    for (let i = 0; i < 10; i++){ // only showing 10
         // deconstructing ftw!
         const {thumbnail, url, title} = allPosts[i].data;
        
